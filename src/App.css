@@ -1,0 +1,34 @@
+.grid-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      to right,
+      rgba(128, 128, 128, 0.2) 1px,
+      /* Light grey lines */ transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(128, 128, 128, 0.2) 1px,
+      /* Light grey lines */ transparent 1px
+    );
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.grid-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    transparent,
+    rgba(20, 20, 20, 0.9)
+  ); /* Darker radial overlay */
+}
