@@ -13,16 +13,16 @@ const Header = () => {
     <>
       <nav className="py-4 flex justify-between items-center">
         <Link to={"/"}>
-          <img src="/logo.png" className="h-20" />
+          <img src="/logo-1.png" className="h-20" />
         </Link>
-        {/* <Button variant={"outline"}>Login</Button> */}
+        <Button variant={"outline"}>Login</Button>
 
-        <SignedOut>
+        {/* <SignedOut>
           <SignInButton />
         </SignedOut>
         <SignedIn>
           <UserButton />
-        </SignedIn>
+        </SignedIn> */}
       </nav>
     </>
   );
