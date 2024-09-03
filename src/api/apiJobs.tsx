@@ -1,10 +1,28 @@
 import supabaseClient from "@/utils/supabase";
 
-export async function getAllJobs(token, { location, company_id, searchQuery }) {
+interface IJobsData {
+  location: string;
+  company_id: number;
+  searchQuery: string;
+}
+
+export async function getAllJobs(
+  token: any,
+  { location, company_id, searchQuery }: IJobsData
+) {
   const supabase = await supabaseClient(token);
   let query = supabase.from("jobs").select("*");
-  const { data, error } = await query;
 
+  if (location) {
+    query = query.eq("location", location);
+  }
+  if (company_id) {
+    query = query.eq("company_id", company_id);
+  }
+  if (searchQuery) {
+    query = query.ilike("title", `%${searchQuery}%`);
+  }
+  const { data, error } = await query;
   if (error) {
     console.error("error getting jobs", error);
     return null;
