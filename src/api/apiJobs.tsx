@@ -11,7 +11,9 @@ export async function getAllJobs(
   { location, company_id, searchQuery }: IJobsData
 ) {
   const supabase = await supabaseClient(token);
-  let query = supabase.from("jobs").select("*");
+  let query = supabase
+    .from("jobs")
+    .select("*,company:companies(name,logo_url),saved: saved_job(id)");
 
   if (location) {
     query = query.eq("location", location);
